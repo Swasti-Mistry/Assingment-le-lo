@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Assignments</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        header {
+            margin: 30px 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .A {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px; /* or whatever size you prefer */
+            color: rgb(255, 255, 255);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .buttons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        .assignment-button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .assignment-button:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .assignment-button:active {
+            transform: translateY(0);
+        }
+
+        .button-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .button-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .button-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        /* Animation for page load */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .assignment-button {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .assignment-button:nth-child(1) { animation-delay: 0.1s; }
+        .assignment-button:nth-child(2) { animation-delay: 0.2s; }
+        .assignment-button:nth-child(3) { animation-delay: 0.3s; }
+        .assignment-button:nth-child(4) { animation-delay: 0.4s; }
+        .assignment-button:nth-child(5) { animation-delay: 0.5s; }
+        .assignment-button:nth-child(6) { animation-delay: 0.6s; }
+        .assignment-button:nth-child(7) { animation-delay: 0.7s; }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .buttons-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .assignment-button {
+                padding: 20px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .button-title {
+                font-size: 1.2rem;
+            }
+            
+            .button-icon {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Assignments</h1>
+            <p class="subtitle">Click on any assignment below to view its details and implementation.</p>
+        </header>
+        
+        <div class="buttons-container">
+            <!-- Button 1 -->
+            <a href="Ass1.html" class="assignment-button">
+                <div class="button-icon">📊</div>
+                <div class="button-title">Assignment 1</div>
+            </a>
+            
+            <!-- Button 2 -->
+            <a href="Ass2.html" class="assignment-button">
+                <div class="button-icon">📊</div>
+                <div class="button-title">Assignment 2</div>
+            </a>
+            
+            <!-- Button 3 -->
+            <a href="Ass3.html" class="assignment-button">
+                <div class="button-icon">📊</div>
+                <div class="button-title">Assignment 3</div>
+            </a>
+            
+            <!-- Button 4 -->
+            <a href="Ass4.html" class="assignment-button">
+                <div class="button-icon">📊</div>
+                <div class="button-title">Assignment 4</div>
+            </a>
+            
+            <!-- Button 5 -->
+            <a href="Ass5.html" class="assignment-button">
+                <div class="button-icon">📊</div>
+                <div class="button-title">Assignment 5</div>
+            </a>
+            
+            <!-- Button 6 -->
+            <a href="Ass6.html" class="assignment-button">
+                <div class="button-icon">📊</div>
+                <div class="button-title">Assignment 6</div>
+            </a>
+            
+            <!-- Button 7 -->
+            <a href="Ass7.html" class="assignment-button">
+                <div class="button-icon">📊</div>
+                <div class="button-title">Assignment 7</div>
+            </a>
+        </div>
+        
+        <footer>
+            <p>Created by <a href="https://web-pro-swasti-1.github.io/Portfolio/" class="A">@Web-Pro-Swasti</a> for academic purposes • GitHub Pages</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.assignment-button');
+            
+            buttons.forEach(button => {
+                // Add click effect
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = '';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+                
+                // Add keyboard navigation
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        this.click();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
