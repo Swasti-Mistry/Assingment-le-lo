@@ -17,7 +17,7 @@ h2{ text-align:center; margin-bottom:15px; color:#333; }
 label{ font-weight:500; display:block; margin-top:10px; }
 input, select{
   width:100%; padding:8px; border:1px solid #ccc;
-  border-radius:6px; margin-top:5px;
+  border-radius:6px; margin-top:5px; box-sizing:border-box;
 }
 .buttons{display:flex; justify-content:space-between; margin-top:15px;}
 button{
@@ -105,8 +105,7 @@ form.addEventListener('submit',e=>{
 });
 
 resetBtn.addEventListener('click',()=>{
-  form.reset();
-  document.querySelectorAll('.error').forEach(e=>e.textContent='');
+  window.location.reload();
 });
 
 cancelBtn.addEventListener('click',()=>{
