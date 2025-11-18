@@ -13,37 +13,28 @@
         }
 
         body {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            background: #1f1f1f;
             color: white;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             padding: 20px;
         }
 
         .container {
             width: 100%;
             max-width: 1200px;
-            text-align: center;
+            margin: 0 auto;
         }
 
         header {
             margin: 30px 0;
             padding: 20px;
+            text-align: center;
         }
 
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .A {
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px; /* or whatever size you prefer */
-            color: rgb(255, 255, 255);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .subtitle {
@@ -53,65 +44,128 @@
             margin: 0 auto;
         }
 
-        .buttons-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            width: 100%;
+        .assignments-wrapper {
             margin: 30px 0;
         }
 
-        .assignment-button {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 25px 20px;
+        .assignment-row {
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #2a2a2a;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
+        }
+
+        .assignment-row:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .row-header {
+            padding: 20px 25px;
             cursor: pointer;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: white;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            background: #2a2a2a;
+            transition: background 0.3s ease;
+            user-select: none;
         }
 
-        .assignment-button:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        .row-header:hover {
+            background: #333333;
         }
 
-        .assignment-button:active {
-            transform: translateY(0);
+        .row-header.active {
+            background: #333333;
         }
 
-        .button-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-
-        .button-title {
+        .row-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 8px;
         }
 
-        .button-desc {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            line-height: 1.4;
+        .row-icon {
+            font-size: 1.8rem;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .row-header.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .row-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: #252525;
+        }
+
+        .row-content.active {
+            max-height: 500px;
+            padding: 20px 25px;
+        }
+
+        .sub-assignments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .sub-assignment-box {
+            background: #1f1f1f;
+            border: 2px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .sub-assignment-box:hover {
+            transform: translateY(-5px);
+            border-color: #555555;
+            background: #2a2a2a;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .sub-box-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .sub-box-title {
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
         footer {
-            margin-top: 40px;
+            margin-top: 60px;
             padding: 20px;
             font-size: 0.9rem;
             opacity: 0.8;
             text-align: center;
+        }
+
+        .A {
+            text-decoration: none;
+            font-weight: bold;
+            color: rgb(200, 200, 200);
+            transition: color 0.3s ease;
+        }
+
+        .A:hover {
+            color: rgb(255, 255, 255);
         }
 
         /* Animation for page load */
@@ -126,18 +180,18 @@
             }
         }
 
-        .assignment-button {
+        .assignment-row {
             animation: fadeInUp 0.5s ease forwards;
             opacity: 0;
         }
 
-        .assignment-button:nth-child(1) { animation-delay: 0.1s; }
-        .assignment-button:nth-child(2) { animation-delay: 0.2s; }
-        .assignment-button:nth-child(3) { animation-delay: 0.3s; }
-        .assignment-button:nth-child(4) { animation-delay: 0.4s; }
-        .assignment-button:nth-child(5) { animation-delay: 0.5s; }
-        .assignment-button:nth-child(6) { animation-delay: 0.6s; }
-        .assignment-button:nth-child(7) { animation-delay: 0.7s; }
+        .assignment-row:nth-child(1) { animation-delay: 0.1s; }
+        .assignment-row:nth-child(2) { animation-delay: 0.2s; }
+        .assignment-row:nth-child(3) { animation-delay: 0.3s; }
+        .assignment-row:nth-child(4) { animation-delay: 0.4s; }
+        .assignment-row:nth-child(5) { animation-delay: 0.5s; }
+        .assignment-row:nth-child(6) { animation-delay: 0.6s; }
+        .assignment-row:nth-child(7) { animation-delay: 0.7s; }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -148,14 +202,22 @@
             .subtitle {
                 font-size: 1rem;
             }
-            
-            .buttons-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
+
+            .row-header {
+                padding: 15px 20px;
             }
-            
-            .assignment-button {
-                padding: 20px 15px;
+
+            .row-title {
+                font-size: 1.1rem;
+                gap: 10px;
+            }
+
+            .row-icon {
+                font-size: 1.5rem;
+            }
+
+            .sub-assignments {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -163,13 +225,17 @@
             h1 {
                 font-size: 1.8rem;
             }
-            
-            .button-title {
-                font-size: 1.2rem;
+
+            body {
+                padding: 15px;
             }
-            
-            .button-icon {
-                font-size: 2rem;
+
+            .row-header {
+                padding: 12px 15px;
+            }
+
+            .row-title {
+                font-size: 1rem;
             }
         }
     </style>
@@ -178,81 +244,163 @@
     <div class="container">
         <header>
             <h1>My Assignments</h1>
-            <p class="subtitle">Click on any assignment below to view its details and implementation.</p>
+            <p class="subtitle">Click on any assignment row to view its sub-assignments.</p>
         </header>
         
-        <div class="buttons-container">
-            <!-- Button 1 -->
-            <a href="Ass1.html" class="assignment-button">
-                <div class="button-icon">📊</div>
-                <div class="button-title">Assignment 1</div>
-            </a>
-            
-            <!-- Button 2 -->
-            <a href="Ass2.html" class="assignment-button">
-                <div class="button-icon">📊</div>
-                <div class="button-title">Assignment 2</div>
-            </a>
-            
-            <!-- Button 3 -->
-            <a href="Ass3.html" class="assignment-button">
-                <div class="button-icon">📊</div>
-                <div class="button-title">Assignment 3</div>
-            </a>
-            
-            <!-- Button 4 -->
-            <a href="Ass4.html" class="assignment-button">
-                <div class="button-icon">📊</div>
-                <div class="button-title">Assignment 4</div>
-            </a>
-            
-            <!-- Button 5 -->
-            <a href="Ass5.html" class="assignment-button">
-                <div class="button-icon">📊</div>
-                <div class="button-title">Assignment 5</div>
-            </a>
-            
-            <!-- Button 6 -->
-            <a href="Ass6.html" class="assignment-button">
-                <div class="button-icon">📊</div>
-                <div class="button-title">Assignment 6</div>
-            </a>
-            
-            <!-- Button 7 -->
-            <a href="Ass7.html" class="assignment-button">
-                <div class="button-icon">📊</div>
-                <div class="button-title">Assignment 7</div>
-            </a>
-        </div>
-        
+        <div class="assignments-wrapper">
+            <!-- Assignment 1 -->
+            <div class="assignment-row">
+                <div class="row-header" onclick="toggleRow(this)">
+                    <div class="row-title">
+                        <span class="row-icon">📊</span>
+                        <span>Assignment 1</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="row-content">
+                    <div class="sub-assignments">
+                        <a href="Ass1.html" class="sub-assignment-box">
+                            <div class="sub-box-icon">📄</div>
+                            <div class="sub-box-title">Assignment 1</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assignment 2 -->
+            <div class="assignment-row">
+                <div class="row-header" onclick="toggleRow(this)">
+                    <div class="row-title">
+                        <span class="row-icon">📊</span>
+                        <span>Assignment 2</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="row-content">
+                    <div class="sub-assignments">
+                        <a href="Ass2.1.html" class="sub-assignment-box">
+                            <div class="sub-box-icon">📄</div>
+                            <div class="sub-box-title">Assignment 2.1</div>
+                        </a>
+                        <a href="Ass2.2.html" class="sub-assignment-box">
+                            <div class="sub-box-icon">📄</div>
+                            <div class="sub-box-title">Assignment 2.2</div>
+                        </a>
+                        <a href="Ass2.3.html" class="sub-assignment-box">
+                            <div class="sub-box-icon">📄</div>
+                            <div class="sub-box-title">Assignment 2.3</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assignment 3 -->
+            <div class="assignment-row">
+                <div class="row-header" onclick="toggleRow(this)">
+                    <div class="row-title">
+                        <span class="row-icon">📊</span>
+                        <span>Assignment 3</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="row-content">
+                    <div class="sub-assignments">
+                        <a href="Ass3-1.html" class="sub-assignment-box">
+                            <div class="sub-box-icon">📄</div>
+                            <div class="sub-box-title">Assignment 3</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assignment 4 -->
+            <div class="assignment-row">
+                <div class="row-header" onclick="toggleRow(this)">
+                    <div class="row-title">
+                        <span class="row-icon">📊</span>
+                        <span>Assignment 4</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="row-content">
+                    <div class="sub-assignments">
+                        <a href="Ass4-1.html" class="sub-assignment-box">
+                            <div class="sub-box-icon">📄</div>
+                            <div class="sub-box-title">Assignment 4</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assignment 5 -->
+            <div class="assignment-row">
+                <div class="row-header" onclick="toggleRow(this)">
+                    <div class="row-title">
+                        <span class="row-icon">📊</span>
+                        <span>Assignment 5</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="row-content">
+                    <div class="sub-assignments">
+                        <a href="Ass5.0.html" class="sub-assignment-box">
+                            <div class="sub-box-icon">📄</div>
+                            <div class="sub-box-title">Assignment 5</div>
+                        </a>
+                </div>
+            </div>
+
+            <!-- Assignment 6 -->
+            <div class="assignment-row">
+                <div class="row-header" onclick="toggleRow(this)">
+                    <div class="row-title">
+                        <span class="row-icon">📊</span>
+                        <span>Assignment 6</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="row-content">
+                    <div class="sub-assignments">
+                        <a href="Ass6.html" class="sub-assignment-box">
+                            <div class="sub-box-icon">📄</div>
+                            <div class="sub-box-title">Assignment 6</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         <footer>
             <p>Created by <a href="https://web-pro-swasti-1.github.io/Portfolio/" class="A">@Web-Pro-Swasti</a> for academic purposes • GitHub Pages</p>
         </footer>
     </div>
 
     <script>
-        // Add interactive effects
-        document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.assignment-button');
+        function toggleRow(header) {
+            const content = header.nextElementSibling;
+            const wasActive = header.classList.contains('active');
             
-            buttons.forEach(button => {
-                // Add click effect
-                button.addEventListener('mousedown', function() {
-                    this.style.transform = 'scale(0.95)';
-                });
-                
-                button.addEventListener('mouseup', function() {
-                    this.style.transform = '';
-                });
-                
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
-                });
-                
-                // Add keyboard navigation
-                button.addEventListener('keydown', function(e) {
+            // Close all rows
+            document.querySelectorAll('.row-header').forEach(h => {
+                h.classList.remove('active');
+                h.nextElementSibling.classList.remove('active');
+            });
+            
+            // If the clicked row wasn't active, open it
+            if (!wasActive) {
+                header.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const headers = document.querySelectorAll('.row-header');
+            
+            headers.forEach(header => {
+                header.setAttribute('tabindex', '0');
+                header.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' || e.key === ' ') {
-                        this.click();
+                        e.preventDefault();
+                        toggleRow(this);
                     }
                 });
             });
