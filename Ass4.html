@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Info</title>
+<style>
+body{font-family:Segoe UI;background:#eef2ff;display:flex;justify-content:center;align-items:center;height:100vh;}
+.container{background:#fff;padding:25px;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,0.1);text-align:center;width:300px;}
+input{padding:10px;width:90%;border:1px solid #ccc;border-radius:8px;text-align:center;margin:5px;}
+button{padding:10px 20px;background:#2563eb;color:white;border:none;border-radius:8px;cursor:pointer;}
+button:hover{background:#1d4ed8;}
+#out{margin-top:10px;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>User Details</h2>
+<input type="text" id="name" placeholder="Name">
+<input type="text" id="age" placeholder="Age (18–65)">
+<input type="text" id="id" placeholder="ID (Ex: S_ID/135)">
+<button onclick="show()">Submit</button>
+<div id="out"></div>
+</div>
+
+<script>
+function show(){
+ let n=document.getElementById("name").value.trim(),
+     a=document.getElementById("age").value.trim(),
+     i=document.getElementById("id").value.trim(),
+     o=document.getElementById("out");
+ if(!/^[A-Za-z ]+$/.test(n)){o.innerHTML="Invalid name!";o.style.color="red";return;}
+ if(!/^\d+$/.test(a)||a<18||a>65){o.innerHTML="Age must be 18–65.";o.style.color="red";return;}
+ if(i==""){o.innerHTML="Enter valid ID.";o.style.color="red";return;}
+ o.style.color="black";
+ o.innerHTML=`Name: ${n}<br>Age: ${a}<br>ID: ${i}`;
+}
+</script>
+</body>
+</html>

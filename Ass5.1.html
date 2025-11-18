@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submitted Details</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1f1f1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.details-container {
+  background: #2a2a2a;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+  border: 1px solid #3a3a3a;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #555555;
+  border-radius: 2px;
+}
+
+.success-icon {
+  text-align: center;
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.detail-row {
+  margin: 15px 0;
+  padding: 12px 15px;
+  background: #1f1f1f;
+  border-radius: 10px;
+  border-left: 4px solid #555555;
+  transition: all 0.3s ease;
+}
+
+.detail-row:hover {
+  background: #252525;
+  border-left-color: #4CAF50;
+  transform: translateX(5px);
+}
+
+.detail-row b {
+  color: #aaaaaa;
+  display: inline-block;
+  width: 140px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.detail-row span {
+  color: #ffffff;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+button {
+  flex: 1;
+  min-width: 120px;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.btn-back {
+  background: linear-gradient(135deg, #555555, #444444);
+}
+
+.btn-back:hover {
+  background: linear-gradient(135deg, #666666, #555555);
+}
+
+.btn-print {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.btn-print:hover {
+  background: linear-gradient(135deg, #5cb85c, #4CAF50);
+}
+
+.empty-state {
+  text-align: center;
+  color: #999999;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .details-container {
+    padding: 30px 25px;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 25px;
+  }
+
+  .detail-row b {
+    width: 120px;
+    font-size: 0.9rem;
+  }
+
+  .detail-row span {
+    font-size: 0.95rem;
+  }
+
+  .success-icon {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  .details-container {
+    padding: 25px 20px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .detail-row {
+    padding: 10px 12px;
+  }
+
+  .detail-row b {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    color: #888888;
+  }
+
+  .detail-row span {
+    display: block;
+    padding-left: 0;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .success-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .details-container {
+    padding: 20px 15px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+  }
+
+  .details-container {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    background: white;
+  }
+
+  h2, .detail-row b, .detail-row span {
+    color: #000;
+  }
+
+  .detail-row {
+    background: #f9f9f9;
+    border-left-color: #333;
+  }
+
+  .button-group {
+    display: none;
+  }
+
+  .success-icon {
+    display: none;
+  }
+}
+</style>
+</head>
+<body>
+<div class="details-container">
+  <div class="success-icon">✓</div>
+  <h2>Submitted Details</h2>
+  
+  <div class="detail-row">
+    <b>Name:</b>
+    <span id="name" class="empty-state">Not provided</span>
+  </div>
+  
+  <div class="detail-row">
+    <b>Date of Birth:</b>
+    <span id="dob" class="empty-state">Not provided</span>
+  </div>
+  
+  <div class="detail-row">
+    <b>Identity Proof:</b>
+    <span id="idp" class="empty-state">Not provided</span>
+  </div>
+  
+  <div class="detail-row">
+    <b>Phone Number:</b>
+    <span id="phone" class="empty-state">Not provided</span>
+  </div>
+  
+  <div class="detail-row">
+    <b>Alternate Phone:</b>
+    <span id="alt" class="empty-state">Not provided</span>
+  </div>
+  
+  <div class="detail-row">
+    <b>Email Address:</b>
+    <span id="email" class="empty-state">Not provided</span>
+  </div>
+
+  <div class="button-group">
+    <button class="btn-back" onclick="window.history.back()">Go Back</button>
+    <button class="btn-print" onclick="window.print()">Print Details</button>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+function displayValue(elementId, paramName) {
+  const element = document.getElementById(elementId);
+  const value = params.get(paramName);
+  
+  if (value && value.trim() !== '') {
+    element.textContent = value;
+    element.classList.remove('empty-state');
+  } else {
+    element.textContent = 'Not provided';
+    element.classList.add('empty-state');
+  }
+}
+
+displayValue('name', 'name');
+displayValue('dob', 'dob');
+displayValue('idp', 'idp');
+displayValue('phone', 'phone');
+displayValue('alt', 'alt');
+displayValue('email', 'email');
+
+// Format date if available
+const dobElement = document.getElementById('dob');
+if (dobElement.textContent !== 'Not provided') {
+  const date = new Date(dobElement.textContent);
+  if (!isNaN(date)) {
+    dobElement.textContent = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+}
+</script>
+</body>
+</html>

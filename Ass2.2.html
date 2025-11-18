@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armstrong Numbers</title>
+<style>
+body{font-family:Segoe UI;background:#f9fafb;display:flex;justify-content:center;align-items:center;height:100vh;}
+.container{background:#fff;padding:25px;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,0.1);text-align:center;width:340px;}
+input{padding:10px;width:45%;border:1px solid #ccc;border-radius:8px;text-align:center;margin:5px;}
+button{padding:10px 20px;background:#0ea5e9;color:white;border:none;border-radius:8px;cursor:pointer;}
+button:hover{background:#0369a1;}
+#result{margin-top:10px;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Armstrong Numbers in Range</h2>
+<input type="text" id="low" placeholder="Lower Range">
+<input type="text" id="high" placeholder="Higher Range"><br>
+<button onclick="findArm()">Find</button>
+<div id="result"></div>
+</div>
+
+<script>
+function isArm(n){
+ let str=n.toString(), len=str.length;
+ let sum=0;
+ for(let ch of str) sum+=Math.pow(+ch,len);
+ return sum==n;
+}
+function findArm(){
+ let l=document.getElementById("low").value.trim(), h=document.getElementById("high").value.trim(), r=document.getElementById("result");
+ if(!/^\d+$/.test(l)||!/^\d+$/.test(h)){r.innerHTML="Enter valid positive numbers.";r.style.color="red";return;}
+ l=parseInt(l);h=parseInt(h);
+ if(l>h)[l,h]=[h,l];
+ let arms=[];
+ for(let i=l;i<=h;i++) if(isArm(i)) arms.push(i);
+ r.style.color="black";
+ r.innerHTML=arms.length?`Armstrong Numbers (${l}–${h}):<br>${arms.join(", ")}`:"No Armstrong numbers found.";
+}
+</script>
+</body>
+</html>

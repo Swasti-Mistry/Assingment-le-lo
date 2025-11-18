@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armstrong Checker</title>
+<style>
+body{font-family:Segoe UI;background:#f1f5f9;display:flex;justify-content:center;align-items:center;height:100vh;}
+.container{background:#fff;padding:25px;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,0.1);text-align:center;width:300px;}
+input{padding:10px;width:90%;border:1px solid #ccc;border-radius:8px;text-align:center;margin:10px 0;}
+button{padding:10px 20px;background:#a855f7;color:white;border:none;border-radius:8px;cursor:pointer;}
+button:hover{background:#7e22ce;}
+#result{margin-top:10px;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Armstrong Number Checker</h2>
+<input type="text" id="num" placeholder="Enter a number">
+<button onclick="checkArm()">Check</button>
+<div id="result"></div>
+</div>
+
+<script>
+function checkArm(){
+ let n=document.getElementById("num").value.trim(), r=document.getElementById("result");
+ if(!/^\d+$/.test(n)||n==""){r.innerHTML="Enter a valid positive number.";r.style.color="red";return;}
+ let len=n.length, sum=0;
+ for(let ch of n) sum+=Math.pow(+ch,len);
+ if(sum==n){r.innerHTML=`${n} is an Armstrong number!`;r.style.color="green";}
+ else{r.innerHTML=`${n} is not an Armstrong number.`;r.style.color="crimson";}
+}
+</script>
+</body>
+</html>
